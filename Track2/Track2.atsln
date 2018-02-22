@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Atmel Studio Solution File, Format Version 11.00
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "WalkingLight", "Track2\WalkingLight.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "SegmentDisplay", "SegmentDisplay\SegmentDisplay.cproj", "{5B801997-27DF-43D5-90E6-1CACCFE6E4F6}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "PatternSegmentDisplay", "PatternSegmentDisplay\PatternSegmentDisplay.cproj", "{C3CE93A0-21D2-4F2A-B366-3C23BA0AE063}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Debug|AVR.ActiveCfg = Debug|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Debug|AVR.Build.0 = Debug|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|AVR.ActiveCfg = Release|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|AVR.Build.0 = Release|AVR
+		{5B801997-27DF-43D5-90E6-1CACCFE6E4F6}.Debug|AVR.ActiveCfg = Debug|AVR
+		{5B801997-27DF-43D5-90E6-1CACCFE6E4F6}.Debug|AVR.Build.0 = Debug|AVR
+		{5B801997-27DF-43D5-90E6-1CACCFE6E4F6}.Release|AVR.ActiveCfg = Release|AVR
+		{5B801997-27DF-43D5-90E6-1CACCFE6E4F6}.Release|AVR.Build.0 = Release|AVR
+		{C3CE93A0-21D2-4F2A-B366-3C23BA0AE063}.Debug|AVR.ActiveCfg = Debug|AVR
+		{C3CE93A0-21D2-4F2A-B366-3C23BA0AE063}.Debug|AVR.Build.0 = Debug|AVR
+		{C3CE93A0-21D2-4F2A-B366-3C23BA0AE063}.Release|AVR.ActiveCfg = Release|AVR
+		{C3CE93A0-21D2-4F2A-B366-3C23BA0AE063}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
