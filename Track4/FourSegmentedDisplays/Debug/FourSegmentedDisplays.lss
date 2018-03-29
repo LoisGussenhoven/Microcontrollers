@@ -3,29 +3,29 @@ FourSegmentedDisplays.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  000002e2  2**0
+  0 .data         00000000  00800100  00800100  000002fa  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         0000028e  00000000  00000000  00000054  2**1
+  1 .text         000002a6  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      00000030  00000000  00000000  000002e2  2**0
+  2 .comment      00000030  00000000  00000000  000002fa  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000314  2**2
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000032c  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 00000078  00000000  00000000  00000350  2**0
+  4 .debug_aranges 00000078  00000000  00000000  00000368  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000e5f  00000000  00000000  000003c8  2**0
+  5 .debug_info   00000ec1  00000000  00000000  000003e0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 000008dd  00000000  00000000  00001227  2**0
+  6 .debug_abbrev 000008dd  00000000  00000000  000012a1  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000535  00000000  00000000  00001b04  2**0
+  7 .debug_line   0000054d  00000000  00000000  00001b7e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  0000010c  00000000  00000000  0000203c  2**2
+  8 .debug_frame  0000010c  00000000  00000000  000020cc  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000004ff  00000000  00000000  00002148  2**0
+  9 .debug_str    00000501  00000000  00000000  000021d8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    000002bd  00000000  00000000  00002647  2**0
+ 10 .debug_loc    000002bd  00000000  00000000  000026d9  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000068  00000000  00000000  00002904  2**0
+ 11 .debug_ranges 00000068  00000000  00000000  00002996  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -110,7 +110,7 @@ Disassembly of section .text:
   94:	de bf       	out	0x3e, r29	; 62
   96:	cd bf       	out	0x3d, r28	; 61
   98:	98 d0       	rcall	.+304    	; 0x1ca <main>
-  9a:	f7 c0       	rjmp	.+494    	; 0x28a <_exit>
+  9a:	03 c1       	rjmp	.+518    	; 0x2a2 <_exit>
 
 0000009c <__bad_interrupt>:
   9c:	b1 cf       	rjmp	.-158    	; 0x0 <__vectors>
@@ -182,7 +182,7 @@ void displayOff()
  100:	28 bb       	out	0x18, r18	; 24
  102:	08 95       	ret
 
-00000104 <spi_writeWord>:
+00000104 <spi_writeLetter>:
  104:	cf 93       	push	r28
  106:	df 93       	push	r29
  108:	d8 2f       	mov	r29, r24
@@ -258,10 +258,10 @@ void writeLedDisplay(int value)
  17c:	d1 95       	neg	r29
  17e:	c1 95       	neg	r28
  180:	d1 09       	sbc	r29, r1
-		spi_writeWord(i, 10);
+		spi_writeLetter(i, 10);
  182:	6a e0       	ldi	r22, 0x0A	; 10
  184:	84 e0       	ldi	r24, 0x04	; 4
- 186:	be df       	rcall	.-132    	; 0x104 <spi_writeWord>
+ 186:	be df       	rcall	.-132    	; 0x104 <spi_writeLetter>
 		i--;
  188:	13 e0       	ldi	r17, 0x03	; 3
  18a:	01 c0       	rjmp	.+2      	; 0x18e <writeLedDisplay+0x26>
@@ -274,7 +274,7 @@ void writeLedDisplay(int value)
  18c:	14 e0       	ldi	r17, 0x04	; 4
 	if (neg){
 		value *= -1;
-		spi_writeWord(i, 10);
+		spi_writeLetter(i, 10);
 		i--;
 	}
 	while (value > 0)
@@ -282,7 +282,7 @@ void writeLedDisplay(int value)
  190:	1d 06       	cpc	r1, r29
  192:	9c f4       	brge	.+38     	; 0x1ba <writeLedDisplay+0x52>
 	{
-		spi_writeWord(i, value % 10);
+		spi_writeLetter(i, value % 10);
  194:	0f 2e       	mov	r0, r31
  196:	fa e0       	ldi	r31, 0x0A	; 10
  198:	cf 2e       	mov	r12, r31
@@ -290,19 +290,19 @@ void writeLedDisplay(int value)
  19c:	f0 2d       	mov	r31, r0
  19e:	ce 01       	movw	r24, r28
  1a0:	b6 01       	movw	r22, r12
- 1a2:	4c d0       	rcall	.+152    	; 0x23c <__divmodhi4>
+ 1a2:	58 d0       	rcall	.+176    	; 0x254 <__divmodhi4>
  1a4:	f6 2e       	mov	r15, r22
  1a6:	07 2f       	mov	r16, r23
  1a8:	68 2f       	mov	r22, r24
  1aa:	81 2f       	mov	r24, r17
- 1ac:	ab df       	rcall	.-170    	; 0x104 <spi_writeWord>
+ 1ac:	ab df       	rcall	.-170    	; 0x104 <spi_writeLetter>
 		value /= 10;
  1ae:	cf 2d       	mov	r28, r15
  1b0:	d0 2f       	mov	r29, r16
  1b2:	11 50       	subi	r17, 0x01	; 1
 	if (neg){
 		value *= -1;
-		spi_writeWord(i, 10);
+		spi_writeLetter(i, 10);
 		i--;
 	}
 	while (value > 0)
@@ -310,7 +310,7 @@ void writeLedDisplay(int value)
  1b6:	1d 06       	cpc	r1, r29
  1b8:	94 f3       	brlt	.-28     	; 0x19e <writeLedDisplay+0x36>
 	{
-		spi_writeWord(i, value % 10);
+		spi_writeLetter(i, value % 10);
 		value /= 10;
 		i--;
 	}
@@ -418,87 +418,100 @@ int main()
  21c:	88 ee       	ldi	r24, 0xE8	; 232
  21e:	93 e0       	ldi	r25, 0x03	; 3
  220:	3e df       	rcall	.-388    	; 0x9e <wait>
- 222:	85 e8       	ldi	r24, 0x85	; 133
 	writeLedDisplay(-123);
+ 222:	85 e8       	ldi	r24, 0x85	; 133
  224:	9f ef       	ldi	r25, 0xFF	; 255
  226:	a0 df       	rcall	.-192    	; 0x168 <writeLedDisplay>
+	
+	wait(1000);
  228:	88 ee       	ldi	r24, 0xE8	; 232
  22a:	93 e0       	ldi	r25, 0x03	; 3
-	
-	wait(1000);
  22c:	38 df       	rcall	.-400    	; 0x9e <wait>
- 22e:	88 ee       	ldi	r24, 0xE8	; 232
- 230:	93 e0       	ldi	r25, 0x03	; 3
- 232:	35 df       	rcall	.-406    	; 0x9e <wait>
-	//spi_writeWord(1, 0b01011110);
-	//spi_writeWord(2, 0);
-	//spi_writeWord(3, 0);
-	//spi_writeWord(4, 0b01011110);
+
+	spi_writeLetter(1, 0x5e);
+ 22e:	6e e5       	ldi	r22, 0x5E	; 94
+ 230:	81 e0       	ldi	r24, 0x01	; 1
+ 232:	68 df       	rcall	.-304    	; 0x104 <spi_writeLetter>
+ 234:	60 e0       	ldi	r22, 0x00	; 0
+	spi_writeLetter(2, 0x00);
+ 236:	82 e0       	ldi	r24, 0x02	; 2
+ 238:	65 df       	rcall	.-310    	; 0x104 <spi_writeLetter>
+ 23a:	60 e0       	ldi	r22, 0x00	; 0
+ 23c:	83 e0       	ldi	r24, 0x03	; 3
+	spi_writeLetter(3, 0x00);
+ 23e:	62 df       	rcall	.-316    	; 0x104 <spi_writeLetter>
+ 240:	6e e5       	ldi	r22, 0x5E	; 94
+ 242:	84 e0       	ldi	r24, 0x04	; 4
+ 244:	5f df       	rcall	.-322    	; 0x104 <spi_writeLetter>
+	spi_writeLetter(4, 0x5e);
+ 246:	88 ee       	ldi	r24, 0xE8	; 232
+ 248:	93 e0       	ldi	r25, 0x03	; 3
+ 24a:	29 df       	rcall	.-430    	; 0x9e <wait>
+ 24c:	81 e0       	ldi	r24, 0x01	; 1
 	
 	wait(1000);
- 234:	81 e0       	ldi	r24, 0x01	; 1
- 236:	90 e0       	ldi	r25, 0x00	; 0
- 238:	cf 91       	pop	r28
- 23a:	08 95       	ret
+ 24e:	90 e0       	ldi	r25, 0x00	; 0
+ 250:	cf 91       	pop	r28
+ 252:	08 95       	ret
 
-0000023c <__divmodhi4>:
+00000254 <__divmodhi4>:
+ 254:	97 fb       	bst	r25, 7
 
 	return (1);
 }
- 23c:	97 fb       	bst	r25, 7
- 23e:	07 2e       	mov	r0, r23
- 240:	16 f4       	brtc	.+4      	; 0x246 <__divmodhi4+0xa>
- 242:	00 94       	com	r0
- 244:	06 d0       	rcall	.+12     	; 0x252 <__divmodhi4_neg1>
- 246:	77 fd       	sbrc	r23, 7
- 248:	08 d0       	rcall	.+16     	; 0x25a <__divmodhi4_neg2>
- 24a:	0b d0       	rcall	.+22     	; 0x262 <__udivmodhi4>
- 24c:	07 fc       	sbrc	r0, 7
- 24e:	05 d0       	rcall	.+10     	; 0x25a <__divmodhi4_neg2>
- 250:	3e f4       	brtc	.+14     	; 0x260 <__divmodhi4_exit>
+ 256:	07 2e       	mov	r0, r23
+ 258:	16 f4       	brtc	.+4      	; 0x25e <__divmodhi4+0xa>
+ 25a:	00 94       	com	r0
+ 25c:	06 d0       	rcall	.+12     	; 0x26a <__divmodhi4_neg1>
+ 25e:	77 fd       	sbrc	r23, 7
+ 260:	08 d0       	rcall	.+16     	; 0x272 <__divmodhi4_neg2>
+ 262:	0b d0       	rcall	.+22     	; 0x27a <__udivmodhi4>
+ 264:	07 fc       	sbrc	r0, 7
+ 266:	05 d0       	rcall	.+10     	; 0x272 <__divmodhi4_neg2>
+ 268:	3e f4       	brtc	.+14     	; 0x278 <__divmodhi4_exit>
 
-00000252 <__divmodhi4_neg1>:
- 252:	90 95       	com	r25
- 254:	81 95       	neg	r24
- 256:	9f 4f       	sbci	r25, 0xFF	; 255
- 258:	08 95       	ret
+0000026a <__divmodhi4_neg1>:
+ 26a:	90 95       	com	r25
+ 26c:	81 95       	neg	r24
+ 26e:	9f 4f       	sbci	r25, 0xFF	; 255
+ 270:	08 95       	ret
 
-0000025a <__divmodhi4_neg2>:
- 25a:	70 95       	com	r23
- 25c:	61 95       	neg	r22
- 25e:	7f 4f       	sbci	r23, 0xFF	; 255
+00000272 <__divmodhi4_neg2>:
+ 272:	70 95       	com	r23
+ 274:	61 95       	neg	r22
+ 276:	7f 4f       	sbci	r23, 0xFF	; 255
 
-00000260 <__divmodhi4_exit>:
- 260:	08 95       	ret
+00000278 <__divmodhi4_exit>:
+ 278:	08 95       	ret
 
-00000262 <__udivmodhi4>:
- 262:	aa 1b       	sub	r26, r26
- 264:	bb 1b       	sub	r27, r27
- 266:	51 e1       	ldi	r21, 0x11	; 17
- 268:	07 c0       	rjmp	.+14     	; 0x278 <__udivmodhi4_ep>
+0000027a <__udivmodhi4>:
+ 27a:	aa 1b       	sub	r26, r26
+ 27c:	bb 1b       	sub	r27, r27
+ 27e:	51 e1       	ldi	r21, 0x11	; 17
+ 280:	07 c0       	rjmp	.+14     	; 0x290 <__udivmodhi4_ep>
 
-0000026a <__udivmodhi4_loop>:
- 26a:	aa 1f       	adc	r26, r26
- 26c:	bb 1f       	adc	r27, r27
- 26e:	a6 17       	cp	r26, r22
- 270:	b7 07       	cpc	r27, r23
- 272:	10 f0       	brcs	.+4      	; 0x278 <__udivmodhi4_ep>
- 274:	a6 1b       	sub	r26, r22
- 276:	b7 0b       	sbc	r27, r23
+00000282 <__udivmodhi4_loop>:
+ 282:	aa 1f       	adc	r26, r26
+ 284:	bb 1f       	adc	r27, r27
+ 286:	a6 17       	cp	r26, r22
+ 288:	b7 07       	cpc	r27, r23
+ 28a:	10 f0       	brcs	.+4      	; 0x290 <__udivmodhi4_ep>
+ 28c:	a6 1b       	sub	r26, r22
+ 28e:	b7 0b       	sbc	r27, r23
 
-00000278 <__udivmodhi4_ep>:
- 278:	88 1f       	adc	r24, r24
- 27a:	99 1f       	adc	r25, r25
- 27c:	5a 95       	dec	r21
- 27e:	a9 f7       	brne	.-22     	; 0x26a <__udivmodhi4_loop>
- 280:	80 95       	com	r24
- 282:	90 95       	com	r25
- 284:	bc 01       	movw	r22, r24
- 286:	cd 01       	movw	r24, r26
- 288:	08 95       	ret
+00000290 <__udivmodhi4_ep>:
+ 290:	88 1f       	adc	r24, r24
+ 292:	99 1f       	adc	r25, r25
+ 294:	5a 95       	dec	r21
+ 296:	a9 f7       	brne	.-22     	; 0x282 <__udivmodhi4_loop>
+ 298:	80 95       	com	r24
+ 29a:	90 95       	com	r25
+ 29c:	bc 01       	movw	r22, r24
+ 29e:	cd 01       	movw	r24, r26
+ 2a0:	08 95       	ret
 
-0000028a <_exit>:
- 28a:	f8 94       	cli
+000002a2 <_exit>:
+ 2a2:	f8 94       	cli
 
-0000028c <__stop_program>:
- 28c:	ff cf       	rjmp	.-2      	; 0x28c <__stop_program>
+000002a4 <__stop_program>:
+ 2a4:	ff cf       	rjmp	.-2      	; 0x2a4 <__stop_program>
