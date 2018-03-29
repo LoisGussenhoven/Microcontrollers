@@ -5,6 +5,7 @@
  * Author : Lois Gussenhoven
  */ 
 
+#define F_CPU 8000000
 #define Vref 5120
 
 #include <avr/io.h>
@@ -27,7 +28,7 @@ ISR(ADC_vect)
 int main(void)
 {
 	DDRA = 0xFF, DDRB = 0xFF;
-	DDRF &= ~0x02;	// PF1(ADC1) Read
+	DDRF &= ~0x02;
 	
 	ADMUX = 0x01;
 	ADCSRA = 0xEE;

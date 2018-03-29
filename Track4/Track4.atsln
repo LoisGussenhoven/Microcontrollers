@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Atmel Studio Solution File, Format Version 11.00
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "b1", "b1\b1.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "AllLedsOnOff", "b1\AllLedsOnOff.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
 EndProject
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "b2", "b2\b2.cproj", "{8EAC29EE-0447-4AAD-99DA-1C92DD230260}"
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "ControllAD", "b2\ControllAD.cproj", "{8EAC29EE-0447-4AAD-99DA-1C92DD230260}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Temp", "Temp\Temp.cproj", "{AF634538-E1C8-4873-B594-E126E0994AA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{8EAC29EE-0447-4AAD-99DA-1C92DD230260}.Debug|AVR.Build.0 = Debug|AVR
 		{8EAC29EE-0447-4AAD-99DA-1C92DD230260}.Release|AVR.ActiveCfg = Release|AVR
 		{8EAC29EE-0447-4AAD-99DA-1C92DD230260}.Release|AVR.Build.0 = Release|AVR
+		{AF634538-E1C8-4873-B594-E126E0994AA8}.Debug|AVR.ActiveCfg = Debug|AVR
+		{AF634538-E1C8-4873-B594-E126E0994AA8}.Debug|AVR.Build.0 = Debug|AVR
+		{AF634538-E1C8-4873-B594-E126E0994AA8}.Release|AVR.ActiveCfg = Release|AVR
+		{AF634538-E1C8-4873-B594-E126E0994AA8}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
