@@ -9,6 +9,8 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "ControllAD", "b2\ControllAD
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Temp", "Temp\Temp.cproj", "{AF634538-E1C8-4873-B594-E126E0994AA8}"
 EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "FourSegmentedDisplays", "FourSegmentedDisplays\FourSegmentedDisplays.cproj", "{805E2C69-05BB-4853-B0BD-79EDA539121F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
@@ -27,6 +29,10 @@ Global
 		{AF634538-E1C8-4873-B594-E126E0994AA8}.Debug|AVR.Build.0 = Debug|AVR
 		{AF634538-E1C8-4873-B594-E126E0994AA8}.Release|AVR.ActiveCfg = Release|AVR
 		{AF634538-E1C8-4873-B594-E126E0994AA8}.Release|AVR.Build.0 = Release|AVR
+		{805E2C69-05BB-4853-B0BD-79EDA539121F}.Debug|AVR.ActiveCfg = Debug|AVR
+		{805E2C69-05BB-4853-B0BD-79EDA539121F}.Debug|AVR.Build.0 = Debug|AVR
+		{805E2C69-05BB-4853-B0BD-79EDA539121F}.Release|AVR.ActiveCfg = Release|AVR
+		{805E2C69-05BB-4853-B0BD-79EDA539121F}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
